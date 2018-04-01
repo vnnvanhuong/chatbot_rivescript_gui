@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+ <h:head>
+  <title>RiveScript</title>
+  <style>
+  	
+  	.container {
+  		display: block;
+	    margin: 50px auto;
+	    width: 90%;
+  	}
+  	
+  	.chatbox {
+  		height: 600px;
+	    border: solid 1px #039;
+	    background-image: url(bot_logo.png);
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-size: contain;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+  	}
+  	
+  	.chatbox .bot-dialog {
+  		width: 90%;
+	    border: dashed 1px purple;
+	    text-align: center;
+	    background-color: orange;
+  	}
+  	
+  	.chatbox .bot-dialog > span{
+  		font-size: larger;
+  	}
+  	
+  	.message {
+  		display: flex;
+  		justify-content: space-between;
+  		
+  	}
+  	.message > input.message-input {
+  		width: 90%;
+  		margin-top: 10px;
+  		line-height: 2.3;
+  	}
+  	
+  	.message > input.submit {
+  		width: 9%;
+	    background-color: #039;
+	    color: white;
+	    font-size: 15px;
+	    margin-top: 10px;
+  	}
+  	
+  	.message-display > span {
+	    font-style: italic;
+	}
+	.message-display > label {
+	    font-weight: bold;
+	}
+	.message-display {
+	    margin-top: 5px;
+	}
+  	
+  </style>
+ </h:head>
+ <h:body>
+	<h:form>
+	   <h:panelGroup layout="block" styleClass="container">
+		   	<h:panelGroup layout="block" styleClass="chatbox">
+		   		<h:panelGroup layout="block" styleClass="bot-dialog">
+		   			<h:outputText id="botMessage" value="#{controller.botMessage}" escape="false"/>
+		   		</h:panelGroup>
+		   	</h:panelGroup>
+		   	
+		   	<h:panelGroup layout="block" styleClass="message">
+		   		<h:inputText id="input" value="#{controller.humanMessage}" styleClass="message-input" 
+		   			p:placeholder="Send a message to the bot"
+		   			p:autofocus="true"
+		   			onblur="this.focus()"/>
+		   		<h:commandButton id="button" value="Send" actionListener="#{controller.onSend}" styleClass="submit"/>
+		   	</h:panelGroup>
+		   	
+		   	<h:panelGroup layout="block" styleClass="message-display" rendered="#{not empty controller.humanMessageDisplay}">
+		   		<h:outputLabel for="messageDisplay" value="You just said: "/>
+		   		<h:outputText id="messageDisplay" value="#{controller.humanMessageDisplay}"/>
+		   	</h:panelGroup>
+	   </h:panelGroup>
+	</h:form>
+ </h:body>
+</html>
