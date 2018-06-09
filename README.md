@@ -1,5 +1,5 @@
 # Chatbot GUI in Java with RiveScript
-This module is an example gui to comunicate with a backend for chatbot via REST
+This module is an example gui to communicate with a backend for chatbot via REST
 
 ## Used tools and technologies
 - Oracle JDK 1.8
